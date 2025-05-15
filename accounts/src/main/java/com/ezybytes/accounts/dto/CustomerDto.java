@@ -14,8 +14,4 @@ public class CustomerDto {
     private AccountsDto accountsDto;
 
 
-
-
-
-
 }

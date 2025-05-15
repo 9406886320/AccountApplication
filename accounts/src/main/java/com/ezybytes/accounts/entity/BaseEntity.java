@@ -10,7 +10,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 public class BaseEntity {
 
     @Column(updatable = false)

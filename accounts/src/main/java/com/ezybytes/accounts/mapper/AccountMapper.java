@@ -13,8 +13,9 @@ public class AccountMapper {
         accountsDto.setBranchAddress(accounts.getBranchAddress());
         return accountsDto;
     }
+
     // convert dto to entity
-    public static Accounts mapToAccount(AccountsDto accountDto, Accounts account){
+    public static Accounts mapToAccount(AccountsDto accountDto, Accounts account) {
 
         account.setAccountNumber(accountDto.getAccountNumber());
         account.setAccountType(accountDto.getAccountType());

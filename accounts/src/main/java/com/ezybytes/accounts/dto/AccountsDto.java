@@ -14,8 +14,4 @@ public class AccountsDto {
     private String branchAddress;
 
 
-
-
-
-
 }
