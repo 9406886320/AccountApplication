@@ -2,13 +2,20 @@ package com.ezybytes.accounts.repository;
 
 
 import com.ezybytes.accounts.entity.Accounts;
-import org.springframework.data.convert.ReadingConverter;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.stereotype.Repository;
+
 
 import java.util.Optional;
 
-@ReadingConverter
+@Repository
 public interface AccountRepository extends JpaRepository<Accounts, Long> {
 
     Optional<Accounts> findByCustomerId(Long customerId);
+
+    @Transactional
+    @Modifying
+    void deleteByCustomerId(Long customerId);
 }
