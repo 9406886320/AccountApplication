@@ -11,6 +11,7 @@
 	<groupId>com.ezybytes.</groupId>
 	<artifactId>cards</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>cards</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -90,6 +91,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.4.5</version>
+				<configuration>
+					<to>
+						<image>
+							sakshi2505/${project.artifactId}:s2
+						</image>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

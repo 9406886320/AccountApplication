@@ -1,6 +1,5 @@
 package com.ezybytes.cards.exception;
 
-import com.ezybytes.accounts.exception.ResourceNotFoundException;
 import com.ezybytes.cards.dto.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
