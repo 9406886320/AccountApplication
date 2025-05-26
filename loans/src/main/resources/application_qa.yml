@@ -6,7 +6,7 @@ spring:
 build:
   version: "2.O"
 
-accounts:
+loans:
   message: "Welcome to Banking loans related QA API's"
   contactDetails:
     name: "Sandesh Agrawal- Developer"
