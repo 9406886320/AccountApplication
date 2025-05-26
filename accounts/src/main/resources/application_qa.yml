@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "2.O"
+
+accounts:
+  message: "Welcome to Banking accounts related QA API's"
+  contactDetails:
+    name: "Sandesh Agrawal- Developer"
+    email: "sanagrawal259@gmail.com"
+  onCallSupport:
+    -999-999-989
