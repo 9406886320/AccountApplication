@@ -2,6 +2,7 @@ package com.ezybytes.accounts.controller;
 
 
 import com.ezybytes.accounts.constants.AccountsConstants;
+import com.ezybytes.accounts.dto.AccountsContactInfoDto;
 import com.ezybytes.accounts.dto.CustomerDto;
 import com.ezybytes.accounts.dto.ErrorResponseDto;
 import com.ezybytes.accounts.dto.ResponseDto;
@@ -45,9 +46,12 @@ public class AccountController {
     @Value("${build.version}")
     private String buildVersion;
 
+
     @Autowired
     private Environment environment;
 
+    @Autowired
+    private AccountsContactInfoDto accountsContactInfoDto ;
     @Operation(
             summary = "Create Account REST API",
             description = "REST API to create new Customer & Account inside EazyBank"
@@ -175,8 +179,8 @@ public class AccountController {
         }
     }
     @Operation(
-            summary = "Get Java version",
-            description = "Get Java version details that is installed into accounts microservice"
+            summary = "Get Jcontact info",
+            description = "contact info details that can be reached out in case of any issues"
     )
     @ApiResponses({
             @ApiResponse(
@@ -191,11 +195,11 @@ public class AccountController {
                     )
             )
     })
-    @GetMapping("/java-version")
-    public ResponseEntity<String> getBuildInfo(){
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContactInfoDto> getContactInfo(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(environment.getProperty("JAVA_HOME"));
+                .body(accountsContactInfoDto);
     }
 
 }
