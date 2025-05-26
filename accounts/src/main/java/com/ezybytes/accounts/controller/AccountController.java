@@ -1,6 +1,4 @@
 package com.ezybytes.accounts.controller;
-
-
 import com.ezybytes.accounts.constants.AccountsConstants;
 import com.ezybytes.accounts.dto.AccountsContactInfoDto;
 import com.ezybytes.accounts.dto.CustomerDto;
@@ -52,6 +50,8 @@ public class AccountController {
 
     @Autowired
     private AccountsContactInfoDto accountsContactInfoDto ;
+
+
     @Operation(
             summary = "Create Account REST API",
             description = "REST API to create new Customer & Account inside EazyBank"
@@ -178,8 +178,34 @@ public class AccountController {
 
         }
     }
+
+
     @Operation(
-            summary = "Get Jcontact info",
+            summary = "Get build info",
+            description = "build info details that can be reached out in case of any issues"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content= @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    })
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+
+    @Operation(
+            summary = "Get contact info",
             description = "contact info details that can be reached out in case of any issues"
     )
     @ApiResponses({
