@@ -1,0 +1,22 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: configserver
+
+  profiles:
+    #active: native
+    active: git
+  cloud:
+    config:
+      server:
+        #native:
+          #search-locations: "classpath:/config"
+          #search-locations: "file:///D://Workspace//config"
+        git:
+          uri: "https://github.com/9406886320/account-config.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true

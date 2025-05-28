@@ -1,0 +1,11 @@
+build:
+  version: "3.O"
+
+accounts:
+  message: "Welcome to Banking accounts related local API's"
+  contactDetails:
+    name: "Sakshi Agrawal- Developer"
+    email: "sakshiagrawal259@gmail.com"
+  onCallSupport:
+    -999-999-999
+

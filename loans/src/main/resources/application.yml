@@ -1,6 +1,10 @@
 server:
   port: 8091
 spring:
+  application:
+    name: "loans"
+  profiles:
+    active: "prod"
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -15,20 +19,4 @@ spring:
       ddl-auto: update
     show-sql: true
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-  profiles:
-    active:
-      - "qa"
-
-build:
-  version: "3.O"
-
-loans:
-  message: "Welcome to Banking loans related local API's"
-  contactDetails:
-    name: "Sakshi Agrawal- Developer"
-    email: "sakshiagrawal259@gmail.com"
-  onCallSupport:
-    -999-999-999
+    import: "optional:configserver:http://localhost:8071/"

@@ -1,0 +1,10 @@
+build:
+  version: "3.O"
+
+loans:
+  message: "Welcome to Banking loans related local API's"
+  contactDetails:
+    name: "Sakshi Agrawal- Developer"
+    email: "sakshiagrawal259@gmail.com"
+  onCallSupport:
+    -999-999-999

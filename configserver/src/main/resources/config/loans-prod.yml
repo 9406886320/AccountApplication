@@ -1,14 +1,8 @@
-spring:
-  config:
-    activate:
-      on-profile: "prod"
-
-
 build:
   version: "1.O"
 
-accounts:
-  message: "Welcome to Banking accounts related Production API's"
+loans:
+  message: "Welcome to Banking loans related Production API's"
   contactDetails:
     name: "Pinky Agrawal- Developer"
     email: "pinkyagrawal259@gmail.com"
