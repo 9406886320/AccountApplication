@@ -30,7 +30,15 @@ management:
     web:
       exposure:
         include: "*"
-
+  health:
+    readinessState:
+      enabled: true
+    livenessState:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
 
 encrypt:
   key: "25MAY2583201997"
