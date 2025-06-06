@@ -1,0 +1,26 @@
+services:
+  network-deploy-service:
+    networks:
+      - bank
+
+  microservice-base-config:
+    extends:
+      service: network-deploy-service
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+
+
+  microservice-configserver-config:
+    extends:
+      service: microservice-base-config
+    depends_on:
+      configserver:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: optional:configserver:http://configserver-ms:8071/
+      SPRING_RABBITMQ_HOST: rabbitmq
