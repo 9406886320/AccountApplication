@@ -1,5 +1,6 @@
 package com.ezybytes.webhook_service.controller;
 
+import com.ezybytes.webhook_service.config.WebhookConfigProperties;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,11 +15,12 @@ public class GitWebhookController {
 
     private final RestTemplate restTemplate = new RestTemplate();
     // URLs of your running services
-    private static final String[] SERVICES = {
-            "http://accounts-ms:8080/actuator/busrefresh", // accounts
-            "http://loans-ms:8091/actuator/busrefresh", // loans
-            "http://cards-ms:9000/actuator/busrefresh"  // cards
-    };
+    private final WebhookConfigProperties configProperties;
+
+    public GitWebhookController(WebhookConfigProperties configProperties) {
+        this.configProperties = configProperties;
+    }
+
     @PostMapping
     public ResponseEntity<String> handleWebhook(@RequestBody JsonNode payload) {
         System.out.println("Received GitHub webhook");
@@ -26,14 +28,14 @@ public class GitWebhookController {
         headers.setContentType(MediaType.APPLICATION_JSON);  // ✅ Fix: prevent 415 error
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
 
-        for (String serviceUrl : SERVICES) {
+        configProperties.getRefreshUrls().forEach(serviceUrl ->{
             try {
                 restTemplate.postForEntity(serviceUrl, requestEntity, String.class);  // Sends POST with proper header
                 System.out.println("Refreshed: " + serviceUrl);
             } catch (Exception e) {
                 System.err.println("Failed to refresh " + serviceUrl + ": " + e.getMessage());
             }
-        }
+        });
         return ResponseEntity.ok("Webhook processed");
     }
 }
