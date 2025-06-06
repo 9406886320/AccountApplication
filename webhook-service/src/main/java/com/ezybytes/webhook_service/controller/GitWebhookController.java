@@ -15,9 +15,9 @@ public class GitWebhookController {
     private final RestTemplate restTemplate = new RestTemplate();
     // URLs of your running services
     private static final String[] SERVICES = {
-            "http://localhost:8080/actuator/busrefresh", // accounts
-            "http://localhost:8091/actuator/busrefresh", // loans
-            "http://localhost:9000/actuator/busrefresh"  // cards
+            "http://accounts-ms:8080/actuator/busrefresh", // accounts
+            "http://loans-ms:8091/actuator/busrefresh", // loans
+            "http://cards-ms:9000/actuator/busrefresh"  // cards
     };
     @PostMapping
     public ResponseEntity<String> handleWebhook(@RequestBody JsonNode payload) {

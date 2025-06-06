@@ -1,6 +1,14 @@
 server:
   port: 8083
 
+spring:
+  application:
+    name: "webhook-service"
+  config:
+    import: "optional:configserver:http://configserver-ms:8071/"
 
-config:
-  import: "optional:configserver:http://localhost:8071/"
+webhook:
+  refreshUrls:
+    - http://accounts-ms:8080/actuator/busrefresh
+    - http://loans-ms:8091/actuator/busrefresh
+    - http://cards-ms:9000/actuator/busrefresh
