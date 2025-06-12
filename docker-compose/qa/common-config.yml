@@ -2,6 +2,18 @@ services:
   network-deploy-service:
     networks:
       - bank
+  microservice-db-config:
+    extends:
+      service: network-deploy-service
+    image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD: root
 
   microservice-base-config:
     extends:
@@ -10,8 +22,8 @@ services:
       resources:
         limits:
           memory: 700m
-    environment:
-      SPRING_RABBITMQ_HOST: rabbitmq
+#    environment:
+#      SPRING_RABBITMQ_HOST: rabbitmq
 
 
   microservice-configserver-config:

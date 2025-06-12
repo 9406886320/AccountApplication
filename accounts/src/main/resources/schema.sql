@@ -5,11 +5,11 @@ CREATE TABLE IF NOT EXISTS `customer`(
 `mobile_number` varchar(20) NOT NULL,
 `created_at` date NOT NULL,
 `created_by` varchar(20) NOT NULL,
-`update_at` date DEFAULT NULL,
-`update_by` varchar(20) DEFAULT NULL
+`updated_at` date DEFAULT NULL,
+`updated_by` varchar(20) DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `accountS` (
+CREATE TABLE IF NOT EXISTS `accounts` (
 `customer_id` int NOT NULL,
 `account_number` int AUTO_INCREMENT PRIMARY KEY,
 `account_type` varchar(100) NOT NULL,
